@@ -6,7 +6,7 @@
 /*   By: trozain <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:04:24 by trozain           #+#    #+#             */
-/*   Updated: 2022/06/30 15:04:40 by trozain          ###   ########.fr       */
+/*   Updated: 2022/06/30 15:34:58 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ int main()
 	void *mlx_windows;
 
 	mlx = mlx_init();
-	mlx_windows = mlx_new_window("jsaispas", 1920, 1080, "Hello world!");
+	mlx_windows = mlx_new_window(julia, 1920, 1080, "Hello world!");
 	mlx_loop(mlx);
 }

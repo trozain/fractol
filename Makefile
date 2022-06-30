@@ -1,15 +1,15 @@
-# --------------------- FLAGS ----------------------------
+# --------------------- FLAGS -------------------------------------------
 CC     = gcc -framework OpenGL -framework AppKit
 CFLAGS = -Wall -Werror -Wextra
 
-#----------------------- LIBFT & MLX -----------------------------
+#----------------------- LIBFT & MLX ------------------------------------
 
 LIBFT = cd libft && make
 ML.X  = cd mlx && make
 LIB   = libft/libft.a
 MLX   = mlx/libmlx.a
 
-#------------------------ BASE -------------------------------
+#------------------------ BASE ------------------------------------------
 
 WINDOW = windows.c
 FRACT1 = fractol1.c
@@ -18,15 +18,15 @@ JULIA  = julia.c
 
 # transfo .c en .o ici
 
-#-------------------------------- BONUS -------------------------------
+#-------------------------------- BONUS ---------------------------------
 
-#------------------------------- OBJS ----------------
+#------------------------------- OBJS -----------------------------------
 
 OBJS = *.o
 
 #- colors
 
-#------------------------------- RULES --------------------------
+#------------------------------- RULES ----------------------------------
 
 all: $(NAME) -framework OpenGL -framework AppKit
 		echo '\033[1;32m COMPIL SUCCESS'; tput sgr0
@@ -63,4 +63,4 @@ fclean:
 
 re: fclean all
 
-.PHONY: all server client clean fclean re bibli fractales mlx
+.PHONY: all mandelbrot julia clean fclean re bibli fractales mlx

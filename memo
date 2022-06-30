@@ -2,4 +2,4 @@ Mandelbrot: z^2 + c
 
 fractales bornees
 
-pour ensemble de julia z2 + c avec c = 0,3 + 0,5 i. est sympas
+pour ensemble de julia z2 + c avec c = 0,3 + 0,5 i. est sympas (mandelbrot mais avec valeur a c)
