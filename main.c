@@ -6,7 +6,7 @@
 /*   By: trozain <trozain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:16:50 by trozain           #+#    #+#             */
-/*   Updated: 2022/07/18 14:28:13 by trozain          ###   ########.fr       */
+/*   Updated: 2022/07/18 16:17:23 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ void	put_text(t_data *data)
 	ft_strdel(&nb);
 }
 
+int	tg(t_data data)
+{
+	(void) data;
+	exit(1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	*data;
@@ -56,6 +62,7 @@ int	main(int argc, char **argv)
 		if ((fract_select(argv, data)) == 0)
 			return (-1);
 		mlx_key_hook(data->win_ptr, keys, data);
+		mlx_hook(data->win_ptr, 17, 1L << 0, tg, data);
 		mlx_hook(data->win_ptr, 4, 0, mouse_hook, data);
 		mlx_loop(data->mlx_ptr);
 		free(data);

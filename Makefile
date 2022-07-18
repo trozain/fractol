@@ -48,7 +48,7 @@ clean:
 	 @echo "$(RED)CLEAN SUCCESS"
 
 fclean: 
-		rm fractol
+		rm -rf fractol
 		$(RM) $(OBJS)
 		rm -rf *.a
 		cd libft && make fclean 
