@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   windows.c                                          :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trozain <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: trozain <trozain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 15:04:24 by trozain           #+#    #+#             */
-/*   Updated: 2022/06/30 15:34:58 by trozain          ###   ########.fr       */
+/*   Created: 2022/07/18 12:21:18 by trozain           #+#    #+#             */
+/*   Updated: 2022/07/18 14:11:29 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx/mlx.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-int main()
+void	ft_putstr(char const *s)
 {
-	void *mlx;
-	void *mlx_windows;
+	int	i;
 
-	mlx = mlx_init();
-	mlx_windows = mlx_new_window(julia, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i] != '\0')
+	{
+		ft_putchar(s[i]);
+		i++;
+	}
 }

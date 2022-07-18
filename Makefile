@@ -1,66 +1,61 @@
 # --------------------- FLAGS -------------------------------------------
-CC     = gcc -framework OpenGL -framework AppKit
+CC     = gcc
 CFLAGS = -Wall -Werror -Wextra
 
 #----------------------- LIBFT & MLX ------------------------------------
 
-LIBFT = cd libft && make
-ML.X  = cd mlx && make
-LIB   = libft/libft.a
-MLX   = mlx/libmlx.a
+LIBFT   = libft/libft.a
+MLX   = minilibx/libmlx.a
 
 #------------------------ BASE ------------------------------------------
 
-WINDOW = windows.c
-FRACT1 = fractol1.c
-MANDEL = mandelbrot.c
-JULIA  = julia.c
-
-# transfo .c en .o ici
+HEADERS = fractol.h
+NAME	= fractol
+SRC		= 	*.c
 
 #-------------------------------- BONUS ---------------------------------
-
+# non abuses pas j ai assez gaelrer ainsi.
 #------------------------------- OBJS -----------------------------------
 
-OBJS = *.o
+OBJS=$(SRC:.c=.o)
 
 #- colors
-
+GREEN = \033[1;32m
+RED	  = \033[1;31m
 #------------------------------- RULES ----------------------------------
 
-all: $(NAME) -framework OpenGL -framework AppKit
-		echo '\033[1;32m COMPIL SUCCESS'; tput sgr0
+all: $(NAME)
 
-$(NAME): bibli mlx fractales
+$(NAME) : $(LIBFT) $(MINILIBX) $(OBJS)
+		Make -C libft
+		Make -C minilibx
+		$(CC) $(CFLAGS) $(SRC) -o $(NAME) -I $(HEADERS) -L. $(LIBFT) -L ./minilibx -lmlx -framework OpenGL -framework AppKit
 
-bibli: 
-		@$(LIBFT)
+		@echo "$(GREEN)COMPIL SUCCESS"
 
-mlx: 
-		@$(ML.X)
-
-fractales: $(FRACT1) bibli mlx
-		@$(CC) $(CFLAGS)
-
-mandelbrot:
-		@$(CC) $(CFLAGS)
-
-julia:
-		@$(CC) $(CFLAGS)
+$(OBJS): $(LIBFT)
+		$(CC) $(FLAGS) -c $(SRC)
+$(LIBFT):
+		make libft
+$(MINILIBX):
+		make minilibx
 
 clean: 
 	$(RM) $(OBJS)
 	 cd libft && make clean
-	 cd mlx && make clean
-	 echo '\033[1;31m CLEANED SUCCESS'; tput sgr0
+	 cd minilibx && make clean
+
+	 @echo "$(RED)CLEAN SUCCESS"
 
 fclean: 
+		rm fractol
 		$(RM) $(OBJS)
 		rm -rf *.a
 		cd libft && make fclean 
-		cd mlx && make clean
-		echo '\033[1;31m FCLEANED SUCCESS'; tput sgr0
+		cd minilibx && make clean
+
+		@echo "$(RED)FCLEAN SUCCESS"
 
 re: fclean all
 
-.PHONY: all mandelbrot julia clean fclean re bibli fractales mlx
+.PHONY: all clean fclean

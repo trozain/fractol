@@ -6,7 +6,7 @@
 /*   By: trozain <trozain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:28:56 by trozain           #+#    #+#             */
-/*   Updated: 2022/01/07 16:19:14 by trozain          ###   ########.fr       */
+/*   Updated: 2022/07/18 12:22:06 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,10 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+int		ft_strcmp(char *s1, char *s2);
+void	ft_strdel(char **as);
+void	ft_putendl(char const *s);
+void	ft_putchar(char c);
+void	ft_putstr(char const *s);
 
 #endif

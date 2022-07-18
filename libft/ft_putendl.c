@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trozain <trozain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 14:37:05 by trozain           #+#    #+#             */
-/*   Updated: 2022/07/18 12:47:10 by trozain          ###   ########.fr       */
+/*   Created: 2022/07/18 10:21:42 by trozain           #+#    #+#             */
+/*   Updated: 2022/07/18 14:10:09 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+void	ft_putendl(char const *s)
 {
-	if (c < 127 && c >= 32)
-		return (1);
-	else
-		return (0);
+	if (!s)
+		return ;
+	ft_putstr(s);
+	ft_putchar('\n');
 }

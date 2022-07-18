@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fract.h                                            :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trozain <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: trozain <trozain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 15:46:20 by trozain           #+#    #+#             */
-/*   Updated: 2022/06/30 15:48:36 by trozain          ###   ########.fr       */
+/*   Created: 2022/07/18 12:19:23 by trozain           #+#    #+#             */
+/*   Updated: 2022/07/18 14:10:39 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <math.h>
-# include <limits.h>
-# include "mlx/mlx.h"
-# include "libft/libft.h"
+#include "libft.h"
+
+void	ft_putchar(char c)
+{
+	unsigned char	b;
+
+	b = (unsigned char)c;
+	write(1, &b, 1);
+}

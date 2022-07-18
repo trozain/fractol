@@ -38,7 +38,12 @@ SRCS =	ft_atoi.c \
 		ft_split.c \
 		ft_strjoin.c \
 		ft_striteri.c \
-
+		ft_strcmp.c \
+		ft_strdel.c \
+		ft_putendl.c \
+		ft_putchar.c \
+		ft_putstr.c \
+		
 OBJS = $(SRCS:.c=.o)
 
 all:		$(NAME)
