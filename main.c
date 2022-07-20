@@ -6,7 +6,7 @@
 /*   By: trozain <trozain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:16:50 by trozain           #+#    #+#             */
-/*   Updated: 2022/07/18 16:17:23 by trozain          ###   ########.fr       */
+/*   Updated: 2022/07/20 10:29:54 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	main(int argc, char **argv)
 	}
 	else if (argc > 2)
 		ft_putendl("Oh calme! parles pas autant ._.");
+	else if (agrc < 2)
+		ft_putendl("rappelle: ./fractol [mandelbrot] ou [julia]")
 	else
 		ft_putendl("Precise un peu bro, quel fract?");
 }

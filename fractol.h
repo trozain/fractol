@@ -6,7 +6,7 @@
 /*   By: trozain <trozain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:46:20 by trozain           #+#    #+#             */
-/*   Updated: 2022/07/18 14:25:21 by trozain          ###   ########.fr       */
+/*   Updated: 2022/07/20 10:52:52 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ typedef struct s_data
 		main
 */
 
-int				fract_select(char **argv, t_data *data);
-void			put_text(t_data *data);
+int	fract_select(char **argv, t_data *data);
+void	put_text(t_data *data);
 
 /*
 		mandelbrot
