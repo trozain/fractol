@@ -6,11 +6,11 @@
 /*   By: trozain <trozain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:01:34 by trozain           #+#    #+#             */
-/*   Updated: 2022/07/21 19:26:25 by trozain          ###   ########.fr       */
+/*   Updated: 2022/07/21 20:16:22 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../lib/fractol.h"
 
 void	julia_init(t_data *data)
 {

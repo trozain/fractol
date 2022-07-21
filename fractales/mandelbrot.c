@@ -6,11 +6,11 @@
 /*   By: trozain <trozain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:02:07 by trozain           #+#    #+#             */
-/*   Updated: 2022/07/21 19:26:12 by trozain          ###   ########.fr       */
+/*   Updated: 2022/07/21 20:19:37 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../lib/fractol.h"
 
 /* x = reel / y = imaginary */
 

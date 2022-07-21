@@ -6,7 +6,7 @@
 /*   By: trozain <trozain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:46:20 by trozain           #+#    #+#             */
-/*   Updated: 2022/07/21 15:54:24 by trozain          ###   ########.fr       */
+/*   Updated: 2022/07/21 20:13:55 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <unistd.h>
 # include <math.h>
-# include "./libft/libft.h"
-# include "./minilibx/mlx.h"
+# include "../libft/libft.h"
+# include "../minilibx/mlx.h"
 
 typedef struct s_data
 {

@@ -6,12 +6,12 @@
 /*   By: trozain <trozain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:01:45 by trozain           #+#    #+#             */
-/*   Updated: 2022/07/21 19:14:33 by trozain          ###   ########.fr       */
+/*   Updated: 2022/07/21 20:16:24 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
-#include "keys.h"
+#include "../lib/fractol.h"
+#include "../lib/keys.h"
 
 void	ft_zoom(int x, int y, t_data *data)
 {

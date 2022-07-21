@@ -4,17 +4,17 @@ CFLAGS = -Wall -Werror -Wextra
 
 #----------------------- LIBFT & MLX ------------------------------------
 
-LIBFT   = libft/libft.a
-MLX   = minilibx/libmlx.a
+LIBFT =		libft/libft.a
+MLX   =		minilibx/libmlx.a
 
 #------------------------ BASE ------------------------------------------
 
-HEADERS = fractol.h
-NAME	= fractol
-SRC		= 	julia.c \
-			fractol1.c \
-			mandelbrot.c \
-			main.c \
+HEADERS =   fractol.h
+NAME	=   fractol
+SRC		= 	fractales/julia.c \
+			mainstruct/fractol1.c \
+			fractales/mandelbrot.c \
+			mainstruct/main.c \
 
 			
 #-------------------------------- BONUS ---------------------------------
@@ -47,12 +47,12 @@ $(LIBFT):
 		make libft
 
 clean: 
-	@$(RM) $(OBJS)
-	@make clean -C libft
-	@echo "$(YELLOW) libft cleaned $(END_COLOR)"
-	@make clean -C minilibx
-	@echo "$(YELLOW) minilibx cleaned $(END_COLOR)"
-	@echo "$(YELLOW) all ".o" cleaned $(END_COLOR)"
+		@$(RM) $(OBJS)
+		@make clean -C libft
+		@echo "$(YELLOW) libft cleaned $(END_COLOR)"
+		@make clean -C minilibx
+		@echo "$(YELLOW) minilibx cleaned $(END_COLOR)"
+		@echo "$(YELLOW) all ".o" cleaned $(END_COLOR)"
 
 fclean:
 		@$(RM) $(OBJS)

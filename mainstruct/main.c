@@ -6,11 +6,11 @@
 /*   By: trozain <trozain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:16:50 by trozain           #+#    #+#             */
-/*   Updated: 2022/07/20 14:28:03 by trozain          ###   ########.fr       */
+/*   Updated: 2022/07/21 20:16:20 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../lib/fractol.h"
 
 int	main(int argc, char **argv)
 {
