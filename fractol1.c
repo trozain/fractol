@@ -6,62 +6,63 @@
 /*   By: trozain <trozain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:01:45 by trozain           #+#    #+#             */
-/*   Updated: 2022/07/18 16:08:02 by trozain          ###   ########.fr       */
+/*   Updated: 2022/07/21 19:14:33 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "keys.h"
 
 void	ft_zoom(int x, int y, t_data *data)
 {
-	data->minreal = (x / data->zoom + data->minreal) - (x / (data->zoom * 1.2));
-	data->min_i = (y / data->zoom + data->min_i) - (y / (data->zoom * 1.2));
+	data->min_x = (x / data->zoom + data->min_x) - (x / (data->zoom * 1.2));
+	data->min_y = (y / data->zoom + data->min_y) - (y / (data->zoom * 1.2));
 	data->zoom *= 1.2;
 	data->max_n++;
 }
 
 void	ft_dezoom(int x, int y, t_data *data)
 {
-	data->minreal = (x / data->zoom + data->minreal) - (x
+	data->min_x = (x / data->zoom + data->min_x) - (x
 			/ (data->zoom / 1.2));
-	data->min_i = (y / data->zoom + data->min_i) - (y / (data->zoom / 1.2));
+	data->min_y = (y / data->zoom + data->min_y) - (y / (data->zoom / 1.2));
 	data->zoom /= 1.2;
 	data->max_n--;
 }
 
-int	mouse_hook(int mousecode, int x, int y, t_data *data)
+int	mouse_hook(int mouse, int x, int y, t_data *data)
 {
 	if (data->fractol == 0)
 	{
-		if (mousecode == 5 || mousecode == 2)
+		if (mouse == SCROLL_DOWN || mouse == RIGHT_CLIC)
 			ft_zoom(x, y, data);
-		else if (mousecode == 4 || mousecode == 1)
+		else if (mouse == SCROLL_UP || mouse == LEFT_CLIC)
 			ft_dezoom(x, y, data);
 		mlx_clear_window(data->mlx_ptr, data->win_ptr);
 		mandelbrot(data);
 	}
 	else if (data->fractol == 1)
-		zoom_julia(data, mousecode);
+		julia_zoom(data, mouse);
 	put_text(data);
 	if (data->fractol == 2)
 	{
-		if (mousecode == 2 || mousecode == 5)
+		if (mouse == RIGHT_CLIC || mouse == SCROLL_DOWN)
 			data->zoom *= 1.2;
-		else if (mousecode == 4 || mousecode == 1)
+		else if (mouse == SCROLL_UP || mouse == LEFT_CLIC)
 			data->zoom /= 1.2;
 		mlx_clear_window(data->mlx_ptr, data->win_ptr);
 	}
 	return (0);
 }
 
-void	zoom_julia(t_data *data, int mousecode)
+void	julia_zoom(t_data *data, int mouse)
 {
-	if (mousecode == 2 || mousecode == 5)
+	if (mouse == RIGHT_CLIC || mouse == SCROLL_DOWN)
 	{
 		data->zoom *= 1.2;
 		data->max_n++;
 	}
-	else if (mousecode == 4 || mousecode == 1)
+	else if (mouse == SCROLL_UP || mouse == LEFT_CLIC)
 	{
 		data->zoom /= 1.2;
 		data->max_n--;
@@ -72,7 +73,7 @@ void	zoom_julia(t_data *data, int mousecode)
 
 int	keys(int key, t_data *data)
 {
-	if (key == 53)
+	if (key == ESCAPE)
 		exit(1);
 	else if (key == 18)
 		data->color = 0x00ff00;

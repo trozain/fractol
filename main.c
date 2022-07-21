@@ -6,11 +6,34 @@
 /*   By: trozain <trozain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:16:50 by trozain           #+#    #+#             */
-/*   Updated: 2022/07/20 10:29:54 by trozain          ###   ########.fr       */
+/*   Updated: 2022/07/20 14:28:03 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int	main(int argc, char **argv)
+{
+	t_data	*data;
+
+	if (argc == 2)
+	{
+		data = (t_data *)malloc(sizeof(t_data));
+		data->mlx_ptr = mlx_init();
+		data->win_ptr = mlx_new_window(data->mlx_ptr, 1100, 1100, "Fractol");
+		if ((fract_select(argv, data)) == 0)
+			return (-1);
+		mlx_key_hook(data->win_ptr, keys, data);
+		mlx_hook(data->win_ptr, 17, 1L << 0, closemouse, data);
+		mlx_hook(data->win_ptr, 4, 0, mouse_hook, data);
+		mlx_loop(data->mlx_ptr);
+		free(data);
+	}
+	else if (argc > 2)
+		ft_putendl("Oh calme! parles pas autant ._.");
+	else
+		ft_putendl("rappelle: ./fractol [mandelbrot] ou [julia]");
+}
 
 int	fract_select(char **argv, t_data *data)
 {
@@ -44,33 +67,8 @@ void	put_text(t_data *data)
 	ft_strdel(&nb);
 }
 
-int	tg(t_data data)
+int	closemouse(t_data data)
 {
 	(void) data;
 	exit(1);
-}
-
-int	main(int argc, char **argv)
-{
-	t_data	*data;
-
-	if (argc == 2)
-	{
-		data = (t_data *)malloc(sizeof(t_data));
-		data->mlx_ptr = mlx_init();
-		data->win_ptr = mlx_new_window(data->mlx_ptr, 1100, 1100, "Fractol");
-		if ((fract_select(argv, data)) == 0)
-			return (-1);
-		mlx_key_hook(data->win_ptr, keys, data);
-		mlx_hook(data->win_ptr, 17, 1L << 0, tg, data);
-		mlx_hook(data->win_ptr, 4, 0, mouse_hook, data);
-		mlx_loop(data->mlx_ptr);
-		free(data);
-	}
-	else if (argc > 2)
-		ft_putendl("Oh calme! parles pas autant ._.");
-	else if (agrc < 2)
-		ft_putendl("rappelle: ./fractol [mandelbrot] ou [julia]")
-	else
-		ft_putendl("Precise un peu bro, quel fract?");
 }

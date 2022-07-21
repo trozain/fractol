@@ -6,21 +6,23 @@
 /*   By: trozain <trozain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:02:07 by trozain           #+#    #+#             */
-/*   Updated: 2022/07/18 13:47:40 by trozain          ###   ########.fr       */
+/*   Updated: 2022/07/21 15:57:52 by trozain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+/* x = reel / y = imaginary */
+
 void	mandelbrot_init(t_data *data)
 {
 	data->width = 1000;
 	data->height = 1000;
-	data->minreal = -2.05;
-	data->maxreal = 1.2;
-	data->min_i = -1.3;
-	data->max_i = 1.2;
-	data->color = 0xd7afd7;
+	data->min_x = -2.05;
+	data->max_x = 1.2;
+	data->min_y = -1.3;
+	data->max_y = 1.2;
+	data->color = 0x660000;
 	data->zoom = 200;
 	data->max_n = 100;
 	mandelbrot(data);
@@ -46,14 +48,15 @@ int	find_n(double cr, double ci, double max_n)
 	return (i);
 }
 
+
 void	mandelbrot(t_data *data)
 {
 	int		x;
 	int		y;
 	int		n;
 
-	x = 100;
-	y = 100;
+	x = 1;
+	y = 1;
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 500, 40, 0xffffff,
 		"Mandelbrot Set");
 	while (x < data->width)
@@ -67,26 +70,27 @@ void	mandelbrot(t_data *data)
 				mlx_pixel_put(data->mlx_ptr, data->win_ptr, x, y, 0x000000);
 			else
 				mlx_pixel_put(data->mlx_ptr, data->win_ptr, x, y,
-					(data->color * n / 100));
+					(data->color * n / 1));
 			y++;
 		}
 		x++;
-		y = 100;
+		y = 1;
 	}
 }
+
 
 double	find_real(int x, t_data *data)
 {
 	double	range;
 
-	range = data->maxreal - data->minreal;
-	return (x * (range / data->width) + data->minreal);
+	range = data->max_x - data->min_x;
+	return (x * (range / data->width) + data->min_x);
 }
 
 double	find_imaginary(int y, t_data *data)
 {
 	double	range;
 
-	range = data->max_i - data->min_i;
-	return (y * (range / data->height) + data->min_i);
+	range = data->max_y - data->min_y;
+	return (y * (range / data->height) + data->min_y);
 }

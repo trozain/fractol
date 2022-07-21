@@ -14,7 +14,7 @@ NAME	= fractol
 SRC		= 	*.c
 
 #-------------------------------- BONUS ---------------------------------
-# non abuses pas j ai assez gaelrer ainsi.
+#  Pas cette fois..
 #------------------------------- OBJS -----------------------------------
 
 OBJS=$(SRC:.c=.o)
@@ -27,9 +27,11 @@ RED	  = \033[1;31m
 all: $(NAME)
 
 $(NAME) : $(LIBFT) $(MINILIBX) $(OBJS)
-		Make -C libft
-		Make -C minilibx
-		$(CC) $(CFLAGS) $(SRC) -o $(NAME) -I $(HEADERS) -L. $(LIBFT) -L ./minilibx -lmlx -framework OpenGL -framework AppKit
+		@Make -C libft
+		@echo "$(GREEN) libft OK"
+		@Make -C minilibx
+		@echo "$(GREEN) minilibx OK"
+		@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(HEADERS) -L. $(LIBFT) -L ./minilibx -lmlx -framework OpenGL -framework AppKit
 
 		@echo "$(GREEN)COMPIL SUCCESS"
 
@@ -37,23 +39,16 @@ $(OBJS): $(LIBFT)
 		$(CC) $(FLAGS) -c $(SRC)
 $(LIBFT):
 		make libft
-$(MINILIBX):
-		make minilibx
 
 clean: 
 	$(RM) $(OBJS)
-	 cd libft && make clean
-	 cd minilibx && make clean
+	 @make clean -C libft
+	 @make clean -C minilibx
 
 	 @echo "$(RED)CLEAN SUCCESS"
 
-fclean: 
-		rm -rf fractol
-		$(RM) $(OBJS)
-		rm -rf *.a
-		cd libft && make fclean 
-		cd minilibx && make clean
-
+fclean: clean
+		@rm -rf fractol
 		@echo "$(RED)FCLEAN SUCCESS"
 
 re: fclean all
