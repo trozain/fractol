@@ -60,4 +60,5 @@ clean:
 	@$(RM) $(OBJS)
 
 fclean:		clean
+	@rm -rf libft.a
 	@$(RM) $(NAME)
