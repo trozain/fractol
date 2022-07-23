@@ -1,11 +1,14 @@
 # --------------------- FLAGS -------------------------------------------
-CC     = gcc
-CFLAGS = -Wall -Werror -Wextra
+CC       = gcc
+CFLAGS   = -Wall -Werror -Wextra
+MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
 #----------------------- LIBFT & MLX ------------------------------------
 
-LIBFT =		libft/libft.a
-MLX   =		minilibx/libmlx.a
+LIBFT  =		libft/libft.a
+MLX    =		minilibx/libmlx.a
+MMLX   =		./minilibx
+LLIBFT =		./libft
 
 #------------------------ BASE ------------------------------------------
 
@@ -33,18 +36,13 @@ END_COLOR = \033[0m
 
 all: $(NAME)
 
-$(NAME) : $(LIBFT) $(MINILIBX) $(OBJS)
-		@Make -C libft
-		@echo "$(GREEN) libft OK $(END_COLOR)"
-		@Make -C minilibx
-		@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(HEADERS) -L. $(LIBFT) -L ./minilibx -lmlx -framework OpenGL -framework AppKit
-		@echo "$(GREEN) minilibx OK $(END_COLOR)"
+$(NAME) : $(OBJS)
+		@Make -C $(LLIBFT)
+		@echo "$(GREEN) LIBFT OK $(END_COLOR)"
+		@Make -C $(MMLX)
+		@$(CC) $(CFLAGS) $(SRC) -o $(NAME) -I $(HEADERS) -L. $(LIBFT) -I $(MMLX) -L $(MMLX) $(MLXFLAGS)
+		@echo "$(GREEN) MLX OK $(END_COLOR)"
 		@echo "$(GREEN)COMPIL SUCCESS $(END_COLOR)"
-
-#$(OBJS): $(LIBFT)
-#		$(CC) $(FLAGS) -c $(SRC)
-$(LIBFT):
-		make libft
 
 clean: 
 		@$(RM) $(OBJS)
@@ -69,4 +67,4 @@ fclean:
 
 re: fclean all
 
-.PHONY: all clean fclean
+.PHONY: all clean fclean re
